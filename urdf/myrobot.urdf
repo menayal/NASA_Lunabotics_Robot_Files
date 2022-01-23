@@ -9,7 +9,7 @@
     <visual>
     <!-- take out the xyz here -->
     <!-- <origin rpy=" 0 0 0" xyz="0 0 0.1"/> -->
-    <origin rpy=" 0 0 0" xyz="0 0 0.1"/>
+    <origin rpy=" 0 0 0" xyz="0 0 0.1"/>/>
       <geometry>
         <!-- l x w x h -->
          <box size="1.0 1.0 0.1"/>
