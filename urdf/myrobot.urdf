@@ -15,6 +15,12 @@
          <box size="1.0 1.0 0.1"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy=" 0 0 0" xyz="0 0 0.1"/>/>
+      <geometry>
+         <box size="1.0 1.0 0.1"/>
+      </geometry>
+    </collision>
   </link>
 
   <link name="right_front_wheel">
@@ -28,6 +34,12 @@
       </geometry>
       <material name="blue"/>
     </visual>
+    <collision>
+      <origin rpy=" 1.57075 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.1"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="right_front_wheel_joint" type="continuous">
@@ -50,6 +62,12 @@
       </geometry>
       <material name="blue"/>
     </visual>
+    <collision>
+      <origin rpy=" 1.57075 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.1"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="left_front_wheel_joint" type="continuous">
@@ -73,6 +91,12 @@
       </geometry>
       <material name="blue"/>
     </visual>
+    <collision>
+      <origin rpy=" 1.57075 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.1"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="right_back_wheel_joint" type="continuous">
@@ -95,6 +119,12 @@
       </geometry>
       <material name="blue"/>
     </visual>
+    <collision>
+      <origin rpy=" 1.57075 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.1"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="left_back_wheel_joint" type="continuous">
