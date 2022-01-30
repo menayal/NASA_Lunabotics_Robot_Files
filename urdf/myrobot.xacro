@@ -51,7 +51,14 @@
 <!--xacro macro for left_back_wheel_joint-->
 <xacro:property name="left_back_wheel_joint_xyz" value="-0.4 -0.5 0.1" />
 
+<!-- Dummy link to get rid of  base_link has an inertia specified in the URDF error -->
+<link name="dummy"/>
 
+<!-- Dummy joint to get rid of  base_link has an inertia specified in the URDF error -->
+<joint name="dummy_joint" type="fixed">
+  <parent link="dummy" />
+  <child link="base_link" />
+</joint>
 
 <link name="base_link">
     <visual>
@@ -68,6 +75,8 @@
     </collision>
     <xacro:base_inertial mass="10"/>
 </link>
+
+
 
 <link name="right_front_wheel">
     <visual>

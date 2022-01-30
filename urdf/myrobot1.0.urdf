@@ -10,6 +10,13 @@
     <color rgba=" 0 0 0.8 1"/>
   </material>
   <!--All Xacro Macros-->
+  <!-- Dummy link to get rid of  base_link has an inertia specified in the URDF error -->
+  <link name="dummy"/>
+  <!-- Dummy joint to get rid of  base_link has an inertia specified in the URDF error -->
+  <joint name="dummy_joint" type="fixed">
+    <parent link="dummy"/>
+    <child link="base_link"/>
+  </joint>
   <link name="base_link">
     <visual>
       <origin xyz="0 0 0.1"/>
