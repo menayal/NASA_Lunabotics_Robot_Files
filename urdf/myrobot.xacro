@@ -78,106 +78,9 @@
 
 
 
-<link name="right_front_wheel">
-    <visual>
-      <origin rpy="${wheel_origin_rpy}"/>
-      <geometry>
-        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-    <collision>
-      <origin rpy="${wheel_origin_rpy}"/>
-      <geometry>
-         <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <xacro:wheel_inertia mass="1"/>
-</link>
-
-<joint name="right_front_wheel_joint" type="continuous">
-    <parent link="base_link" />
-    <child link="right_front_wheel" />
-    <axis xyz="${wheel_axis}"/>
-    <origin rpy="0 0 0 " xyz="${right_front_wheel_joint_xyz}"/>
-</joint>
-
-
-<link name="left_front_wheel">
-    <visual>
-      <origin rpy="${wheel_origin_rpy}"/>
-      <geometry>
-        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-    <collision>
-      <origin rpy="${wheel_origin_rpy}"/>
-      <geometry>
-        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <xacro:wheel_inertia mass="1"/>
-</link>
-
-<joint name="left_front_wheel_joint" type="continuous">
-    <parent link="base_link" />
-    <child link="left_front_wheel" />
-    <axis xyz="${wheel_axis}"/>
-    <origin rpy="0 0 0" xyz="${left_front_wheel_joint_xyz}"/>
-</joint>
-
-<link name="right_back_wheel">
-    <visual>
-      <origin rpy="${wheel_origin_rpy}" />
-      <geometry>
-        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-    <collision>
-      <origin rpy="${wheel_origin_rpy}" />
-      <geometry>
-        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <xacro:wheel_inertia mass="1"/>
-</link>
-
-<joint name="right_back_wheel_joint" type="continuous">
-    <parent link="base_link" />
-    <child link="right_back_wheel" />
-    <axis xyz="${wheel_axis}"/>
-    <origin rpy="0 0 0" xyz="${right_back_wheel_joint_xyz}"/>
-</joint>
-
-<link name="left_back_wheel">
-    <visual>
-      <origin rpy="${wheel_origin_rpy}"/>
-      <geometry>
-        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-    <collision>
-      <origin rpy="${wheel_origin_rpy}"/>
-      <geometry>
-        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <xacro:wheel_inertia mass="1"/>
-</link>
-
-<joint name="left_back_wheel_joint" type="continuous">
-    <parent link="base_link" />
-    <child link="left_back_wheel" />
-    <!-- axis on which it will move -->
-    <axis xyz="${wheel_axis}"/>
-    <origin rpy="0 0 0" xyz="${left_back_wheel_joint_xyz}"/>
-  </joint>
 
   <!-- create a xacro macro for the wheels links -->
-  <xacro:macro name="wheel" params="prefix suffix reflect">
+  <xacro:macro name="wheel" params="prefix suffix reflect_x reflect_y reflect_z">
       <link name="${prefix}_${suffix}_wheel">
           <visual>
             <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
@@ -197,21 +100,22 @@
       <!-- create xacro macro fo wheel joint -->
       <joint name="${prefix}_${suffix}_wheel_joint" type="continuous">
           <axis xyz="${wheel_axis}" rpy="0 0 0" />
-          <parent link="${prefix}_base"/>
+          <parent link="base_link"/>
           <child link="${prefix}_${suffix}_wheel"/>
-          <origin xyz="${baselen*reflect/3} 0 -${wheeldiam/2+.05}" rpy="0 0 0"/>
+          <origin xyz="${reflect_x * 0.4} ${reflect_y * 0.5} ${reflect_z * 0.1}" rpy="0 0 0"/>
       </joint>
   </xacro:macro>
+  
 <!--wheel/joint_0 code inspired from -->
 <!-- https://github.com/ZBO-R8io/Roberto/blob/main/backups/lunarbot/urdf/lunarbot.xacro -->
 <!-- change these values -->
-  <xacro:wheel suffix="0" reflect_x="1" reflect_y="1" reflect_z="-1" />
+  <xacro:wheel prefix="right" suffix="0" reflect_x="1" reflect_y="1" reflect_z="1" />
   <!--wheel/joint_1-->
-  <xacro:wheel suffix="1" reflect_x="1" reflect_y="-1" reflect_z="-1" />
+  <xacro:wheel prefix="left" suffix="1" reflect_x="1" reflect_y="-1" reflect_z="1" />
   <!--wheel/joint_2-->
-  <xacro:wheel suffix="2" reflect_x="-1" reflect_y="1" reflect_z="-1" />
+  <xacro:wheel prefix="right" suffix="2" reflect_x="-1" reflect_y="1" reflect_z="1" />
   <!--wheel/joint_3-->
-  <xacro:wheel suffix="3" reflect_x="-1" reflect_y="-1" reflect_z="-1" />
+  <xacro:wheel prefix="left" suffix="3" reflect_x="-1" reflect_y="-1" reflect_z="1" />
 
   <!-- Gazebo plugin for ROS Control -->
   <gazebo>
