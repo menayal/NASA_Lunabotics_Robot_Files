@@ -55,13 +55,13 @@
 
 <link name="base_link">
     <visual>
-    <origin xyz=${base_origin}/>
+    <origin xyz="${base_origin}"/>
       <geometry>
          <box size="${length} ${width} ${height}"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz=${base_origin}/>
+      <origin xyz="${base_origin}"/>
       <geometry>
          <box size="${length} ${width} ${height}"/>
       </geometry>
@@ -122,14 +122,14 @@
     <visual>
       <origin rpy="${wheel_origin_rpy}" />
       <geometry>
-        <cylinder length=${wheel_len}" radius="${wheel_radius}"/>
+        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
       </geometry>
       <material name="blue"/>
     </visual>
     <collision>
       <origin rpy="${wheel_origin_rpy}" />
       <geometry>
-        <cylinder length=${wheel_len}" radius="${wheel_radius}"/>
+        <cylinder length="${wheel_len}" radius="${wheel_radius}"/>
       </geometry>
     </collision>
     <xacro:wheel_inertia mass="1"/>
