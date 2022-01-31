@@ -62,13 +62,13 @@
 
 <link name="base_link">
     <visual>
-    <origin xyz="${base_origin}"/>
+    <!-- <origin xyz="${base_origin}"/> -->
       <geometry>
          <box size="${length} ${width} ${height}"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="${base_origin}"/>
+      <!-- <origin xyz="${base_origin}"/> -->
       <geometry>
          <box size="${length} ${width} ${height}"/>
       </geometry>
@@ -102,8 +102,31 @@
           <axis xyz="${wheel_axis}" rpy="0 0 0" />
           <parent link="base_link"/>
           <child link="${prefix}_${suffix}_wheel"/>
-          <origin xyz="${reflect_x * 0.4} ${reflect_y * 0.5} ${reflect_z * 0.1}" rpy="0 0 0"/>
+          <origin xyz="${reflect_x * 0.4} ${reflect_y * 0.5} ${reflect_z * 0.05}" rpy="0 0 0"/>
       </joint>
+
+      <!-- This block provides the simulator (Gazebo) with information on a few additional
+      physical properties. See http://gazebosim.org/tutorials/?tut=ros_urdf for more-->
+      <gazebo reference="${prefix}_${suffix}_wheel">
+        <mu1 value="200.0"/>
+        <mu2 value="100.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <material>Gazebo/Grey</material>
+      </gazebo>
+
+      <!-- This block connects the wheel joint to an actuator (motor), which informs both
+          simulation and visualization of the robot -->
+      <transmission name="${prefix}_${suffix}_wheel_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="${prefix}_${suffix}_wheel_motor">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="${prefix}_${suffix}_wheel_joint">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
   </xacro:macro>
   
 <!--wheel/joint_0 code inspired from -->
