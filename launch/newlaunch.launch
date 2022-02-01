@@ -1,5 +1,5 @@
 <launch>
-    <arg name="model" default="$(find new_robot_urdf)/urdf/myrobot_diff_drive.urdf"/>
+    <arg name="model" default="$(find new_robot_urdf)/urdf/myrobot.xacro"/>
     <arg name="gui" default="true" />
 
     <arg name="rvizconfig" default="$(find new_robot_urdf)/rviz/urdf.rviz" />
