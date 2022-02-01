@@ -6,7 +6,7 @@
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
-  <arg name="model" default="$(find new_robot_urdf)/urdf/myrobot1.0.urdf"/>
+  <arg name="model" default="$(find new_robot_urdf)/urdf/myrobot_diff_drive.urdf"/>
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
