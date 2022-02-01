@@ -1,8 +1,8 @@
 type: "diff_drive_controller/DiffDriveController"
 publish_rate: 50
 
-left_wheel: ['left_front_wheel_joint', 'left_back_wheel_joint']
-right_wheel: ['right_front_wheel_joint', 'right_back_wheel_joint']
+left_wheel: ['left_3_wheel', 'left_1_wheel']
+right_wheel: ['right_2_wheel', 'right_0_wheel']
 
 wheel_separation: 0.44
 
