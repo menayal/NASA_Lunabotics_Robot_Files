@@ -132,13 +132,13 @@
 <!--wheel/joint_0 code inspired from -->
 <!-- https://github.com/ZBO-R8io/Roberto/blob/main/backups/lunarbot/urdf/lunarbot.xacro -->
 <!-- change these values -->
-  <xacro:wheel prefix="wheel" suffix="0" reflect_x="1" reflect_y="1" reflect_z="1" />
+  <xacro:wheel prefix="right" suffix="0" reflect_x="1" reflect_y="1" reflect_z="1" />
   <!--wheel/joint_1-->
-  <xacro:wheel prefix="wheel" suffix="1" reflect_x="1" reflect_y="-1" reflect_z="1" />
+  <xacro:wheel prefix="left" suffix="1" reflect_x="1" reflect_y="-1" reflect_z="1" />
   <!--wheel/joint_2-->
-  <xacro:wheel prefix="wheel" suffix="2" reflect_x="-1" reflect_y="1" reflect_z="1" />
+  <xacro:wheel prefix="right" suffix="2" reflect_x="-1" reflect_y="1" reflect_z="1" />
   <!--wheel/joint_3-->
-  <xacro:wheel prefix="wheel" suffix="3" reflect_x="-1" reflect_y="-1" reflect_z="1" />
+  <xacro:wheel prefix="left" suffix="3" reflect_x="-1" reflect_y="-1" reflect_z="1" />
 
   <!-- Gazebo plugin for ROS Control -->
   <gazebo>
