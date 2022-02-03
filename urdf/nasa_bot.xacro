@@ -37,7 +37,7 @@
     <link name="${name}_link">
       <visual>
         <geometry>
-          <mesh filename="package://lunarbot/meshes/base_link2.stl"/>
+          <mesh filename="package://new_robot_urdf/meshes/base_link2.stl"/>
         </geometry>
         <material name="${body_color}"/>
      </visual>
@@ -237,7 +237,7 @@
       <visual>
         <origin xyz="${auger_link_origin}"/>
         <geometry>
-           <mesh filename="package://lunarbot/meshes/auger.stl"/>
+           <mesh filename="package://new_robot_urdf/meshes/auger.stl"/>
         </geometry>
         <material name="${auger_color}"/>
       </visual>
@@ -284,6 +284,6 @@
   <!--Gazebo plugin for ros_control-->
   <gazebo>
 	  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
-	  <robotNamespace>/lunarbot</robotNamespace>
+	  <robotNamespace>/new_robot_urdf</robotNamespace>
 	</gazebo>
 </robot>
