@@ -1,0 +1,10 @@
+Auger:
+-length: 1.3m
+-rad: .2m
+Body:
+-x: 1.5m
+-y: .8m
+-z: .3m
+Wheel:
+-rad: .4m
+-len: .2m
