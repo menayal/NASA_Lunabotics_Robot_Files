@@ -1,0 +1,46 @@
+<launch>
+    <!-- https://github.com/ZBO-R8io/Roberto/blob/main/backups/lunarbot/launch/lunarbot2.launch 
+        File edited from. -->
+
+  <arg name="model" default="$(find new_robot_urdf)/urdf/nasa_bot.xacro"/>
+
+  <arg name="rvizconfig" default="$(find new_robot_urdf)/rviz/urdf.rviz" />
+
+  <include file="$(find new_robot_urdf)/launch/gazebo.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+  <!-- Load joint controller configurations from YAML files -->
+  <rosparam command="load"
+            file="$(find lunarbot)/config/joints2.yaml"
+            ns="lunarbot_joint_state_controller"/>
+            
+  <rosparam command="load"
+            file="$(find lunarbot)/config/eff_joint2.yaml"
+            ns="joint_5_position_controller"/>
+            
+  <rosparam command="load"
+            file="$(find lunarbot)/config/vel_joint2.yaml"
+            ns="auger_joint_velocity_controller"/>
+            
+  <rosparam command="load"
+            file="$(find lunarbot)/config/diffdrive2.yaml"
+            ns="lunarbot_diff_drive_controller"/>
+
+  <!-- load the controllers -->
+  <node name="lunarbot_controller_spawner" pkg="controller_manager"
+              type="spawner"
+              args="lunarbot_joint_state_controller
+                          joint_5_position_controller
+                          auger_joint_velocity_controller
+                          lunarbot_diff_drive_controller"/>
+
+  <node name="rqt_controller_manager" pkg="rqt_controller_manager"
+              type="rqt_controller_manager">
+  </node>
+    <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui">
+  </node>
+  
+</launch>
