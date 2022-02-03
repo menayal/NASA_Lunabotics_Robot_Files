@@ -1,0 +1,5 @@
+# https://github.com/ZBO-R8io/Roberto/blob/main/backups/lunarbot/config/eff_joint2.yaml
+# Position Controller --------------------
+    type: "position_controllers/JointPositionController"
+    joint: joint_5
+    pid: {p: 100.0, i: 0.01, d: 10.0}

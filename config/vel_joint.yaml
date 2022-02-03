@@ -1,0 +1,5 @@
+# https://github.com/ZBO-R8io/Roberto/blob/main/backups/lunarbot/config/vel_joint2.yaml
+  # Velocity Controller --------------------
+    type: "velocity_controllers/JointVelocityController"
+    joint: auger_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
