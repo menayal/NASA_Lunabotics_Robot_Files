@@ -14,19 +14,19 @@
 
   <!-- Load joint controller configurations from YAML files -->
   <rosparam command="load"
-            file="$(find lunarbot)/config/joints2.yaml"
+            file="$(find lunarbot)/config/joints.yaml"
             ns="lunarbot_joint_state_controller"/>
             
   <rosparam command="load"
-            file="$(find lunarbot)/config/eff_joint2.yaml"
+            file="$(find lunarbot)/config/eff_joints.yaml"
             ns="joint_5_position_controller"/>
             
   <rosparam command="load"
-            file="$(find lunarbot)/config/vel_joint2.yaml"
+            file="$(find lunarbot)/config/vel_joint.yaml"
             ns="auger_joint_velocity_controller"/>
             
   <rosparam command="load"
-            file="$(find lunarbot)/config/diffdrive2.yaml"
+            file="$(find lunarbot)/config/diff_drive.yaml"
             ns="lunarbot_diff_drive_controller"/>
 
   <!-- load the controllers -->
@@ -42,5 +42,5 @@
   </node>
     <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui">
   </node>
-  
+
 </launch>
