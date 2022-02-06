@@ -37,10 +37,12 @@
                           auger_joint_velocity_controller
                           new_robot_urdf_diff_drive_controller"/>
 
-  <node name="rqt_controller_manager" pkg="rqt_controller_manager"
+  <!-- <node name="rqt_controller_manager" pkg="rqt_controller_manager"
               type="rqt_controller_manager">
-  </node>
-    <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui">
-  </node>
+  </node> -->
+     <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+        <param name="default_topic" value="/new_robot_urdf_diff_drive_controller/cmd_vel"/>
+    </node>
+    <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"> </node>
 
 </launch>
