@@ -1,0 +1,30 @@
+Steps to get Gazebo to launch with your robot's URDF file. 
+
+At this point, its already assumed that you have a URDF model and some the related files. If not, go through the tutorials at
+	https://wiki.ros.org/urdf/Tutorials
+
+Step 1) Launch robot model
+CD into your directory or workspace  where the package is held.
+Make sure you have sourced your workspace if you haven't already. (source devel/setup.bash)
+
+roslaunch (package name) (launchfile)
+
+Opens up model into rviz and then proceeds to open up Gazebo.
+Gazebo shows model in a simulated world.
+
+Two ways to control the robot at this point.
+a. Use the sliders to control the robot 
+	--use rqt_robot_steering package
+		-- To use, simply use the sliders that have already popped up.
+b. Use your keyoboard to move the robot
+	--use the teleop_twist_keyboard package
+		--To use, open up a new tab in your terminal. Keep that roslaunch file running. 
+		--run the command:
+		--rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/"your_robots_controller_for_the_wheels"/cmd_vel
+		--To find "your_robots_controller_for_the_wheels" look into your launch file where you defined a ns for the wheels' controller. For instance, I named my ns for that controller "my_new_robot_diff_drive_controller"
+		--rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/new_robot_urdf_diff_drive_controller/cmd_vel
+
+Your robot can now move in Gazebo. 
+ 
+
+		
