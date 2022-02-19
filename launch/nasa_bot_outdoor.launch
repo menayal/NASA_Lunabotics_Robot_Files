@@ -1,48 +1,32 @@
+<?xml version="1.0"?>
 <launch>
-    <!-- https://github.com/ZBO-R8io/Roberto/blob/main/backups/lunarbot/launch/lunarbot2.launch 
-        File edited from. -->
 
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
   <arg name="model" default="$(find new_robot_urdf)/urdf/nasa_bot.xacro"/>
 
-  <arg name="rvizconfig" default="$(find new_robot_urdf)/rviz/urdf.rviz" />
-
-  <include file="$(find new_robot_urdf)/launch/gazebo.launch">
-    <arg name="model" value="$(arg model)" />
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find new_robot_urdf)/worlds/outdoor.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
-  <!-- Load joint controller configurations from YAML files -->
-  <rosparam command="load"
-            file="$(find new_robot_urdf)/config/joints.yaml"
-            ns="new_robot_urdf_joint_state_controller"/>
-            
-  <rosparam command="load"
-            file="$(find new_robot_urdf)/config/eff_joints.yaml"
-            ns="joint_5_position_controller"/>
-            
-  <rosparam command="load"
-            file="$(find new_robot_urdf)/config/vel_joint.yaml"
-            ns="auger_joint_velocity_controller"/>
-            
-  <rosparam command="load"
-            file="$(find new_robot_urdf)/config/diff_drive.yaml"
-            ns="new_robot_urdf_diff_drive_controller"/>
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+        args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
 
-  <!-- load the controllers -->
-  <node name="new_robot_urdf_controller_spawner" pkg="controller_manager"
-              type="spawner"
-              args="new_robot_urdf_joint_state_controller
-                          joint_5_position_controller
-                          auger_joint_velocity_controller
-                          new_robot_urdf_diff_drive_controller"/>
-
-  <!-- <node name="rqt_controller_manager" pkg="rqt_controller_manager"
-              type="rqt_controller_manager">
-  </node> -->
-     <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-        <param name="default_topic" value="/new_robot_urdf_diff_drive_controller/cmd_vel"/>
-    </node>
-    <!-- <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"> </node> -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="30.0" />
+  </node>
 
 </launch>
