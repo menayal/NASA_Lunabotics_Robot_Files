@@ -1,0 +1,119 @@
+Just created pubs and subs with python3. 
+
+Need to create a urdf file, go through the tutorials.
+	Create custom simple bot
+	learn the other aspects of the bot ( launch files etc)
+	start controlling with script
+	key args use teleop keyboard , controller. 
+
+1/8/22:
+Created ros package and some launch files
+make sure to source into the dir before u run commands
+--need to figure out what other files i need to launch into gazebo
+--maybe empty world?
+
+need to add wheels,
+the origin is in relation to the base, needs to be half measurement of rectangle of base, and half of the measurement of the wheel. 
+
+look into ros_control.
+
+add wheels ---
+ 2/3/22
+TO DO
+Add rest of robot
+test it.
+
+---
+push changes
+what is rqt manager, 
+get bot to move with keyboard, DONE
+talk to Dustin about what files do what etc.
+research navigation and scripts to move bot. 
+look into the camera sensors and obstacle avoidance. 
+
+--
+Look into sensors
+look into creating nodes
+	how they can communicate
+	how start a sequence of mining something with the auger
+	--using services/parameters?
+
+	
+use gazebo to sense an object and move left or right
+	--messages? std_msgs/String message type -- is a message type, i think need to use from geometry_msgs.msg import Twist
+	create more intricate path, obstacle avoidance
+
+	rosrun pckage name py
+
+	find out more about turtlsim.msg pose for gotogoal.py
+
+
+
+work on moving left and right on move left py, then work on controller input and think about controller integration with motor. 
+Look into install a sensor and obstacle avoidance. 
+
+#downloaded https://github.com/ros-drivers/joystick_drivers/tree/melodic-devel ps3 controller pkg from github aka joystick_drivers
+	--Error running catkin build for ros_catkin_ws i think bc of the joystick drivers pkgg 
+	--Errors:
+		   << spacenav_node:make /home/nayal/ros_catkin_ws/logs/spacenav_node/build.make.002.log  
+	/home/nayal/ros_catkin_ws/src/joystick_drivers/spacenav_node/src/spacenav_node.cpp:40:10: fatal error: spnav.h: No such file or directory
+	 #include "spnav.h"  // NOLINT
+		  ^~~~~~~~~
+	compilation terminated.
+	
+	--solution https://github.com/ros-drivers/joystick_drivers/issues/79   error fixed
+	
+	jstest not working so need to install joy packaggge
+
+	install jstest gtk using sudo
+
+need to map ps3 controls or see if they working correct. then try moving in gazbeo. 
+
+	 
+installed the teleop twist joy pkg
+	only gets some feeddback, and is delayed.
+
+Find out how and if ps3 controller is mapped correctly. and then get it into gazebo. 
+
+to start using ps3 controller with inputs:
+
+ls /dev/input
+sudo jstest /dev/input/js2
+make sure  to keep active, if off, turn on and off vm
+	
+now to test out in turle sim use:
+	roscore
+	rosrun joy joy_node --i think for real too
+	rosrun turtlesim turtlesim_node 
+	rosrun new_robot_urdf moveTurtleSim.py 
+	#had errors, but when i changed shebang from #!/usr/bin/env python to #!/usr/bin/env python3 worked fine. 
+
+ls /dev/input
+sudo jstest /dev/input/js2
+roscore
+sudo jstest /dev/input/js2
+
+roscore
+rosparam set joy_node/dev "/dev/input/js2"
+rosrun joy joy_node 
+new term cd nasa
+source
+roslaunch new.. nasa
+new term
+cd nasa
+source
+rosrun new.. moveRobot.py
+
+
+3/29/21
+installed pip install PyQtGraph
+for the plot in rqt
+
+3/30/22
+installed robotics plugin for rqt
+sudo apt-get install ros-%YOUR_ROS_DISTRO%-rqt-robot-plugins 
+	not working not supported for melodic
+will git clone the rqt_rviz from github to the ros ws src
+apparently already have it installed, find out how to import into the dashboard
+
+copied the rqt_rviz package/plugin from the ros catkin ws to nasa_ws/src, then ran catkin_make in home dir, then was able to see rviz. 
