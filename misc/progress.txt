@@ -117,3 +117,11 @@ will git clone the rqt_rviz from github to the ros ws src
 apparently already have it installed, find out how to import into the dashboard
 
 copied the rqt_rviz package/plugin from the ros catkin ws to nasa_ws/src, then ran catkin_make in home dir, then was able to see rviz. 
+
+3/6/22
+convert files and workspace to use python2
+currently files use python3 and catkin_make does not work
+
+figure out how to use github with new comp
+
+may need to create a new branh or repo to reset all the changes?
