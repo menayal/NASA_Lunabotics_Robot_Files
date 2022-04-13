@@ -1,16 +1,19 @@
 <launch>
     <!-- https://github.com/ZBO-R8io/Roberto/blob/main/backups/lunarbot/launch/lunarbot2.launch 
         File edited from. -->
-
+  <!-- load the robot's model -->
   <arg name="model" default="$(find new_robot_urdf)/urdf/nasa_bot.xacro"/>
+  
+  <!-- Stores rviz configurations  -->
+  <!-- <arg name="rvizconfig" default="$(find new_robot_urdf)/rviz/urdf.rviz" /> -->
 
-  <arg name="rvizconfig" default="$(find new_robot_urdf)/rviz/urdf.rviz" />
-
+  <!-- launches the gazebo wprd with the robot's model -->
   <include file="$(find new_robot_urdf)/launch/gazebo.launch">
     <arg name="model" value="$(arg model)" />
   </include>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <!-- starts rviz with the robot's model -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" /> -->
 
   <!-- Load joint controller configurations from YAML files -->
   <rosparam command="load"
@@ -36,13 +39,15 @@
                           joint_5_position_controller
                           auger_joint_velocity_controller
                           new_robot_urdf_diff_drive_controller"/>
-
-  <!-- <node name="rqt_controller_manager" pkg="rqt_controller_manager"
-              type="rqt_controller_manager">
-  </node> -->
+  <!-- Loads the rqt steering controller -->
+  <!-- </node> 
      <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
         <param name="default_topic" value="/new_robot_urdf_diff_drive_controller/cmd_vel"/>
-    </node>
-    <!-- <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"> </node> -->
+    </node> -->
+  
+  <!-- launch rqt_gui with custom GUI's configurations -->
+  <!-- rqt add two dashesperspective-file "$(rospack find my_ros_rqt_package)/config/my_dashboard.perspective" -->
+  <node name = "rqt_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" 
+  args = "--perspective-file $(find new_robot_urdf)/perspectives/simple1.0.perspective"/>
 
 </launch>
