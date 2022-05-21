@@ -48,6 +48,6 @@
   <!-- launch rqt_gui with custom GUI's configurations -->
   <!-- rqt add two dashesperspective-file "$(rospack find my_ros_rqt_package)/config/my_dashboard.perspective" -->
   <node name = "rqt_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" 
-  args = "--perspective-file $(find new_robot_urdf)/perspectives/GUI_with_Buttons.perspective"/>
+  args = "--perspective-file $(find new_robot_urdf)/perspectives/GUI_with_Camera.perspective"/>
 
 </launch>
