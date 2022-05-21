@@ -3,9 +3,10 @@ Panels:
     Help Height: 138
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /Image2
       Splitter Ratio: 0.5
-    Tree Height: 138
+    Tree Height: 232
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -46,46 +47,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        auger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -106,6 +67,30 @@ Visualization Manager:
         {}
       Update Interval: 0
       Value: false
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /usb_cam0/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: compressed
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /usb_cam1/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: compressed
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -162,12 +147,14 @@ Visualization Manager:
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 860
+  Height: 1373
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001f7000002c0fc0200000002fb000000100044006900730070006c006100790073010000006e000001820000018200fffffffb0000000a0056006900650077007301000001fc000001320000013200ffffff00000411000002c000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Image:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd0000000100000000000001f7000004c1fc0200000004fb000000100044006900730070006c006100790073010000006e000001e00000018200fffffffb0000000a00560069006500770073010000025a000001320000013200fffffffb0000000a0049006d0061006700650100000398000000b00000002600fffffffb0000000a0049006d0061006700650100000454000000db0000002600ffffff00000184000004c100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1556
+  Width: 903
   X: 0
   Y: 38
