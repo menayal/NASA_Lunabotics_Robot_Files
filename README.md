@@ -5,20 +5,15 @@ This repository holds a single package named "my_robot_urdf".
 The repository has files on the robot's model, configuration, and navigation. 
 ## Getting Started
 
-This robot uses ROS Melodic on Ubuntu 18.04 and is developed in Python. 
-Please make sure to go through these instructions with a new virtual machine to properly configure ROS on your operating system to use Python3. 
+This robot uses ROS Melodic on Ubuntu 18.04 and is developed in Python. If using Python3 head over to the [python3Version](https://github.com/menayal/NASA_Lunabotics_Robot_Files/tree/python3Version) branch to walkthrough how to use that. 
+
+Please make sure to go through these instructions with a new virtual machine to properly configure ROS on your operating system. 
 Then, start the ROS Tutorials. 
-
-* [Install/configure ROS with Python3](https://www.miguelalonsojr.com/blog/robotics/ros/python3/2019/08/20/ros-melodic-python-3-build.html)
-
-* [Install/configure ROS with Python3 (Additional Resource)](https://gist.github.com/drmaj/20b365ddd3c4d69e37c79b01ca17587a)
 
 * [ROS Tutorials](http://wiki.ros.org/ROS/Tutorials)
 
 ### Prerequisites
 Create a GitHub account and install Git on your machine. 
-
-Go through these [instructions](https://www.miguelalonsojr.com/blog/robotics/ros/python3/2019/08/20/ros-melodic-python-3-build.html) and follow the steps if you haven't already.
 
 Go through the [ROS URDF Tutorials](http://wiki.ros.org/urdf/Tutorials). This is not absolutely necessary, but highly recommended so you can get a good foundation on what is actually going on. 
 
@@ -54,7 +49,7 @@ git clone git@github.com:menayal/NASA_Lunabotics_Robot_Files.git
 ```
 You should now have my robot's package on your workspace. 
 
-This repository's name is different from my packages actual name, so we will change the name to what the rest of my repository uses. 
+This repository's name is **different** from my packages **actual name**, so we will change the name to what the rest of my repository uses. 
 ```
 mv NASA_Lunabotics_Robot_Files/ new_robot_urdf 
 ```
